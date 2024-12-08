@@ -8,13 +8,13 @@ EXPOSE 8080
 COPY wait-for-it.sh /wait-for-it.sh
 
 # Copy the Spring Boot JAR file into the container
-COPY target/spring-boot-mysql.jar /spring-boot-mysql.jar
+COPY target/spring-web-mvc-thymeleaf-app.jar /spring-web-mvc-thymeleaf-app.jar
 
 # Make wait-for-it.sh executable
 RUN chmod +x /wait-for-it.sh
 
 # Wait for MySQL to be available before starting the Spring Boot app
-ENTRYPOINT ["/wait-for-it.sh", "mysqldb:3306", "--", "java", "-jar", "/spring-boot-mysql.jar"]
+ENTRYPOINT ["/wait-for-it.sh", "mysqldb:3306", "--", "java", "-jar", "/spring-web-mvc-thymeleaf-app.jar"]
 
 
 
