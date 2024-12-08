@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+  application:
+    image: Spring-web-mvc-Thymeleaf-app
+    ports:
+      - "8080:8080"
+    networks:
+      - springboot-db-net
+    depends_on:
+      - mysqldb
+    volumes:
+      - springboot-app-data:/data/springboot-app
+    
+
+  mysqldb:
+    image: mysql:8.0
+    networks:
+      - springboot-db-net
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=testdb
+    volumes:
+      - mysql-data:/data/mysql
+
+networks:
+  springboot-db-net:
+    driver: bridge
+
+volumes:
+  springboot-app-data:
+  mysql-data:
+
+
+     
