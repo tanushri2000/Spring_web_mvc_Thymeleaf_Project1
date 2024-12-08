@@ -14,7 +14,7 @@ COPY target/spring-web-mvc-thymeleaf.jar /spring-web-mvc-thymeleaf.jar
 RUN chmod +x /wait-for-it.sh
 
 # Wait for MySQL to be available before starting the Spring Boot app
-ENTRYPOINT ["/wait-for-it.sh", "mysqldb:3306", "--", "java", "-jar", "/spring-web-mvc-thymeleaf-app.jar"]
+ENTRYPOINT ["/wait-for-it.sh", "mysqldb:3306", "--", "java", "-jar", "/spring-web-mvc-thymeleaf.jar"]
 
 
 
